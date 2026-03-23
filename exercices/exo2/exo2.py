@@ -18,14 +18,35 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-TEMP = ["celsius", "fahrenheit"]
-unit = ["c2f", "f2c"]
-c2f = (TEMP["celsius"] * 1.8) + 32
-f2c = (TEMP["fahrenheit"] + 32) / 1.8
-
-@ app.route('/convert/temp', methods = ['GET'])
+@app.route('/convert/temp', methods=['GET'])
 def convert_temp():
-    value = 0
-    unit
-    if unit == c2f :
-         (TEMP["celsius"] * 1.8) + 32
+    value = request.args.get('value', type=float)
+    unit = request.args.get('unit')
+
+    if value is None or unit is None:
+        return jsonify({
+            "error": "Veuillez fournir 'value' et 'unit'"
+        }), 400
+
+    if unit == "c2f":
+        result = (value * 1.8) + 32
+        return jsonify({
+            "celsius": value, 
+            "fahrenheit": result
+        })
+    
+    elif unit == "f2c":
+        result = (value - 32) / 1.8
+        return jsonify({
+            "fahrenheit": value, 
+            "celsius": result
+        })
+    
+    else:
+        return jsonify({
+            "error": "Unité invalide. Utilisez 'c2f' ou 'f2c'"
+        }), 400
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
