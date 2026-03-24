@@ -12,7 +12,7 @@
 # # {"message": "Bonjour!", "language": "french"}
 # ```
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ GREETINGS = {
     "english": "Hello!"
 }
 
-@app.route('/api/hello/<language>', methods= ['GET'])
+@app.route('/hello/<language>', methods= ['GET'])
 def hello(language):
     """
     Hello endpoint with optional language parameter
@@ -33,8 +33,8 @@ def hello(language):
         dict: JSON response with greeting
 
     Examples:
-        GET /api/hello → {"message": "Hello, english!"}
-        GET /api/hello?language=french → {"message": "Bonjour, french!"}
+        GET /hello → {"message": "Hello, english!"}
+        GET /hello?language=french → {"message": "Bonjour, french!"}
     """
     lang = language.lower()
 
@@ -50,4 +50,4 @@ def hello(language):
     })
 
 if __name__ == '__main__' : 
-    app.run(debug=True)
+    app.run(debug= True, port= 5000)
