@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 #SQLite
 DATABASE_URL = "sqlite:///demo.db"
-
 #MySQL
 # pip install sqlalchemy pymysql
 # DATABASE_URL = "mysql+pymysql://root:test@localhost:3306/demo_sqlalche?charset=utf8mb4" # Mysql
