@@ -1,13 +1,11 @@
 from fastapi import FastAPI
-from routers.product import router as product_router
+import uvicorn
 
-app = FastAPI(
-    title = "FastAPI exo3 with routers",
-    version= "1.0.0"
-)
+from routers.products import router as products_router
 
-app.include_router(product_router)
+app = FastAPI(title="Exercice FastAPI",version="1.0.0",description="Validation FASTAPI")
 
-@app.get("/")
-async def welcome():
-    return {"message" : "Bienvenue sur l'API de l'exercice 3"}
+app.include_router(products_router)
+
+if __name__ == "__main__":
+    uvicorn.run("main:app",host='0.0.0.0',port=8000,reload=True)
