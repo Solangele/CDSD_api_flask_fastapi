@@ -36,4 +36,4 @@ class UserSchema(BaseModel):
 
 @app.post("/users", response_model=UserSchema)
 async def create_user(user: UserSchema):
-    return user
+    return user 

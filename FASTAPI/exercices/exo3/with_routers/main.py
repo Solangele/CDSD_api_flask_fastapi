@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from product import router as product_router
+from routers.product import router as product_router
 
 app = FastAPI(
     title = "FastAPI exo3 with routers",
