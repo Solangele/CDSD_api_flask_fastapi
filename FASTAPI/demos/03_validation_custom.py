@@ -84,7 +84,7 @@ class Registration(BaseModel):
     @model_validator(mode='after')
     def validate_passwords_match(self):
         """
-             validator - validate across multiple fields
+        Root validator - validate across multiple fields
         Checks that password and confirm_password match
         """
         if self.password != self.confirm_password:
