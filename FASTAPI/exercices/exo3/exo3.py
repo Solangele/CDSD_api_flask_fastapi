@@ -50,5 +50,5 @@ class Products(BaseModel):
 
 
 @app.post("/product", response_model=Products)
-async def create_user(product: Products):
+async def create_product(product: Products):
     return product
