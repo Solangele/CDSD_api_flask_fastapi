@@ -1,7 +1,6 @@
 from fastapi import Depends, FastAPI
-from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
+from sqlalchemy import Column, Integer, String, ForeignKey, create_engine, select
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker, Session
-from sqlalchemy import ForeignKey, String, create_engine, select
 from typing import Generator
  
 
